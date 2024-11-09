@@ -10,6 +10,7 @@ public class ItemButtonManager : MonoBehaviour
     private string itemDescription;
     private Sprite itemImage;
     private GameObject item3DModel;
+    private ARInteractionsManager interactionsManager;
     public string ItemName
     {
         set
@@ -63,13 +64,15 @@ public class ItemButtonManager : MonoBehaviour
     {
         Debug.LogWarning("Button no está presente en el GameObject.");
     }
+
+    interactionsManager = FindAnyObjectByType<ARInteractionsManager>();
 }
 
   private void Create3DModel()
 {
     if (item3DModel != null)
     {
-        Instantiate(item3DModel);
+       interactionsManager.Item3DModel=  Instantiate(item3DModel);
     }
     else
     {
