@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemButton : MonoBehaviour
+public class ItemButtonManager : MonoBehaviour
 {
     private string itemName;
     private string itemDescription;
@@ -24,18 +24,57 @@ public class ItemButton : MonoBehaviour
     public GameObject Item3DModel{set => item3DModel = value;}
 
     // Start is called before the first frame update
-    void Start()
+   void Start()
+{
+    if (itemName != null)
     {
         transform.GetChild(0).GetComponent<Text>().text = itemName;
-        transform.GetChild(1).GetComponent<RawImage>().texture = itemImage.texture;
-        transform.GetChild(2).GetComponent<Text>().text = itemDescription;
+    }
+    else
+    {
+        Debug.LogWarning("itemName no está configurado.");
+    }
 
-        var button = GetComponent<Button>();
+    if (itemImage != null)
+    {
+        transform.GetChild(1).GetComponent<RawImage>().texture = itemImage.texture;
+    }
+    else
+    {
+        Debug.LogWarning("itemImage no está configurado.");
+    }
+
+    if (itemDescription != null)
+    {
+        transform.GetChild(2).GetComponent<Text>().text = itemDescription;
+    }
+    else
+    {
+        Debug.LogWarning("itemDescription no está configurado.");
+    }
+
+    var button = GetComponent<Button>();
+    if (button != null)
+    {
         button.onClick.AddListener(GameManager.instance.ARPosition);
         button.onClick.AddListener(Create3DModel);
     }
+    else
+    {
+        Debug.LogWarning("Button no está presente en el GameObject.");
+    }
+}
 
-   private void Create3DModel(){
-    Instantiate(item3DModel);
-   }
+  private void Create3DModel()
+{
+    if (item3DModel != null)
+    {
+        Instantiate(item3DModel);
+    }
+    else
+    {
+        Debug.LogWarning("item3DModel no está configurado.");
+    }
+}
+
 }

@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 9210966401257908863}
   - component: {fileID: 7094691920562968810}
   - component: {fileID: 227180283665159050}
+  - component: {fileID: 5478275016684167026}
   m_Layer: 0
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -194,19 +195,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7094691920562968810}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ARPosition
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &5478275016684167026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6000238916754590906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391df7c0b59d6b849bc0defe9bf6c86e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7110179538392268841
 GameObject:
   m_ObjectHideFlags: 0
