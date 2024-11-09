@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1795fb79d52730f47a450d041e7b3c6d, type: 3}
-  m_Name: New Item
+  m_Name: chair
   m_EditorClassIdentifier: 
-  ItemName: 
-  itemImage: {fileID: 0}
-  ItemDescription: 
-  IteM3DModel: {fileID: 0}
+  ItemName: Chair
+  itemImage: {fileID: 21300000, guid: 92d97ac957124584c9e1515b58e31291, type: 3}
+  ItemDescription: model chair
+  IteM3DModel: {fileID: 5041385345199189255, guid: e3220a10395431043856b4a8621bd1d9, type: 3}
