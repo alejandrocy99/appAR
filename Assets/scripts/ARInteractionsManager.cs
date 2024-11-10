@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 public class ARInteractionsManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class ARInteractionsManager : MonoBehaviour
     private GameObject aRPointer;
     private GameObject item3DModel;
     private bool isInitialPosition;
+    private bool isOverUI;
 
     public GameObject Item3DModel
     {
@@ -46,12 +48,36 @@ public class ARInteractionsManager : MonoBehaviour
         }
         if(Input.touchCount>0)
         {
-            Touch touchOne = Input.GetTouch(0):
+            Touch touchOne = Input.GetTouch(0);
             if(touchOne.phase == TouchPhase.Began)
             {
-                var touc
+                var touchPosition = touchOne.position;
+                isOverUI = isTapOverUI(touchPosition);
+            }
+
+            if (touchOne.phase == TouchPhase.Moved)
+            {
+                if(aRRaycastManager.Raycast(touchOne.position,hits,TrackableType.Planes))
+                {
+                    Pose hitPose = hits[0].pose;
+                    if(!isOverUI)
+                    {
+                        transform.position = hitPose.position;
+                    }
+                }
             }
         }
+    }
+
+    private bool isTapOverUI(Vector2 touchPosition)
+    {
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = new Vector2(touchPosition.x,touchPosition.y);
+
+        List<RaycastResult> result = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData,result);
+
+        return result.Count > 0;
     }
 
     private void SetItemPosition()
